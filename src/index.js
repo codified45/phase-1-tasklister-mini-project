@@ -55,13 +55,26 @@ const handleDelete = e => {
 // A delete function that will remove tasks from your list
 // done:
   // dltBtn.addEventListener('click', handleDelete)
+  // const handleDelete = e => {e.target.parentNode.remove()}
 
 // A priority value selected from a dropdown that is used to determine the color of the text in the list (e.g. red for high priority, yellow for medium, green for low)
+//<label for="cars">Choose a car:</label>
+
+// <select name="cars" id="cars">
+//  <option value="volvo">Volvo</option>
+//  <option value="saab">Saab</option>
+//  <option value="mercedes">Mercedes</option>
+//  <option value="audi">Audi</option>
+// </select>
 
 // As an additional challenge, implement a sorting functionality that displays the tasks in ascending or descending order based on priority
+// Bubble?
 
 // An additional input field (e.g. user, duration, date due)
+// add <input>
 
 // Ability to edit tasks
+// somehow reassign textContent according to what user inputs (might have to create an input field when the user clicks edit button)
 
 // Something of your choice! The main objective is to add a feature that allows the user's input to affect the DOM
+// boost priority button

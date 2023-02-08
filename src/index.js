@@ -13,10 +13,14 @@ const buildToDo = (toDoItem) => {
   console.log(toDoItem);
   let p = document.createElement('p');
   p.textContent = `${toDoItem}      `;
+  let taskColor = document.querySelector('new_task_priority');
+  console.log(document.querySelector('new_task_priority'));
+  p.setAttribute("color", taskColor);
   document.querySelector('#create-task-form').reset(); 
+  
   document.querySelector('#tasks').appendChild(p);
   let dltBtn = document.createElement('button');
-  dltBtn.addEventListener('click', handleDelete)
+  dltBtn.addEventListener('click', handleDelete);
   dltBtn.textContent = "x";
   p.appendChild(dltBtn);
   console.log(dltBtn.innerHTML);
@@ -26,6 +30,8 @@ const buildToDo = (toDoItem) => {
 const handleDelete = e => {
   e.target.parentNode.remove();
 }
+
+// const 
 
 
 

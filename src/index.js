@@ -13,9 +13,9 @@ const buildToDo = (toDoItem) => {
   console.log(toDoItem);
   let p = document.createElement('p');
   p.textContent = `${toDoItem}      `;
-  let taskColor = document.querySelector('new_task_priority');
-  console.log(document.querySelector('new_task_priority'));
-  p.setAttribute("color", taskColor);
+  let taskColor = document.querySelector('#new_task_priority').value;
+  p.style.color = taskColor;
+
   document.querySelector('#create-task-form').reset(); 
   
   document.querySelector('#tasks').appendChild(p);
@@ -31,8 +31,9 @@ const handleDelete = e => {
   e.target.parentNode.remove();
 }
 
-// const 
+const getPriority = () => {
 
+}
 
 
 // Deliverables:

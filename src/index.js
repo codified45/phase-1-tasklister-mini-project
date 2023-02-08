@@ -35,18 +35,31 @@ const handleDelete = e => {
 }
 
 
-// look up how to redraw all the elements in container so that the order property of the flex is respected.  Ohhhh mayb because it is a list instead of a div!!!!! Or might have to store the elements in some sort of array and refresh the page? Hm not sure. Lookup "reordering elements in DOM"
+// look up how to redraw all the elements in container so that the order property of the flex is respected.  Ohhhh maybe because it is a list instead of a div!!!!! Or might have to store the elements in some sort of array and refresh the page? Hm not sure. Lookup "reordering elements in DOM"
 const prioritize = () => {
   console.log('clicked');
   console.log(document.getElementsByClassName('userAddedItem'));
   let allUserTasks = document.getElementsByClassName('userAddedItem')
+  
   for (const task of allUserTasks) {
     if (task.style.color === "yellow") {task.style.order = 1};
     if (task.style.color === "green") {task.style.order = 2};
+
+    document.getElementById('tasks').replaceChildren(...allUserTasks);
   };
-  const taskList = document.getElementById('tasks');
-  taskList.replaceChildren(...allUserTasks);
+
+  // const taskList = document.getElementById('tasks');
+  // taskList.replaceChildren(...allUserTasks);
   console.log(allUserTasks);
+  // reload();
+};
+
+function reload(){
+  let container = document.getElementById("tasks");
+  let content = container.innerHTML;
+  container.innerHTML= content; 
+	
+  console.log("Refreshed"); 
 };
 
 

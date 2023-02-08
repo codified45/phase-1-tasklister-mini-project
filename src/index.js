@@ -35,7 +35,8 @@ const handleDelete = e => {
 }
 
 
-// look up how to redraw all the elements in container so that the order property of the flex is respected.  Ohhhh maybe because it is a list instead of a div!!!!! Or might have to store the elements in some sort of array and refresh the page? Hm not sure. Lookup "reordering elements in DOM"
+// look up how to redraw all the elements in container so that the order property of the flex is respected.  Maybe its because it is inside an unordered list instead of a div... but I don't think so, they are both just HTML elements. Or might have to store the elements in some sort of array and refresh the page? Hm not sure. Lookup "reordering elements in DOM"
+  // Might have to  turn the HTML collection into an array first so that we could access array methods like .sort(), but I thought flex order was a way around this...
 const prioritize = () => {
   console.log('clicked');
   console.log(document.getElementsByClassName('userAddedItem'));
@@ -54,6 +55,8 @@ const prioritize = () => {
   // reload();
 };
 
+
+// just an attempt to "refresh" the DOM in the container. But it did not work. 
 function reload(){
   let container = document.getElementById("tasks");
   let content = container.innerHTML;

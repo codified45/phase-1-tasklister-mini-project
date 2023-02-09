@@ -34,43 +34,30 @@ const handleDelete = e => {
   e.target.parentNode.remove();
 }
 
-
-// look up how to redraw all the elements in container so that the order property of the flex is respected.  Maybe its because it is inside an unordered list instead of a div... but I don't think so, they are both just HTML elements. Or might have to store the elements in some sort of array and refresh the page? Hm not sure. Lookup "reordering elements in DOM"
-  // Might have to  turn the HTML collection into an array first so that we could access array methods like .sort(), but I thought flex order was a way around this...
+// Might have to  turn the HTML collection into an array first so that we could access array methods like .sort(), but I thought flex order was a way around this...
 const prioritize = () => {
   console.log('clicked');
   console.log(document.getElementsByClassName('userAddedItem'));
   let allUserTasks = document.getElementsByClassName('userAddedItem')
   
-  for (const task of allUserTasks) {
-          if (task.style.color === "yellow") {task.style.order = 1};
-          if (task.style.color === "green") {task.style.order = 2}; // definition of flexible items? == All child elements of a flex container. 
+  for (const task of allUserTasks) {  
+    if (task.style.color === "yellow") {task.style.order = 1};  // default style.order === 0, so red does not need to be adjusted
+    if (task.style.color === "green") {task.style.order = 2}; // definition of flexible items? == All child elements of a flex container. 
   }
 
   let userTaskArray = [...allUserTasks];
   console.log(userTaskArray);
   
+  // sort by ascending flex order value
   const compareOrder = (a, b) => {
     return a.style.order - b.style.order;
   }
 
-  userTaskArray.sort(compareOrder)
+  userTaskArray.sort(compareOrder);
 
+  // redraw elements in DOM
   const taskList = document.getElementById('tasks');
   taskList.replaceChildren(...userTaskArray);
- 
-  console.log(allUserTasks);
-  // reload();
-};
-
-
-// just an attempt to "refresh" the DOM in the container. But it did not work. 
-function reload(){
-  let container = document.getElementById("tasks");
-  let content = container.innerHTML;
-  container.innerHTML= content; 
-	
-  console.log("Refreshed"); 
 };
 
 
@@ -94,7 +81,6 @@ function reload(){
   // document.querySelector('#tasks').appendChild(p);
 
 
-
 // ** Stretch Deliverables:
 
 // A delete function that will remove tasks from your list
@@ -108,7 +94,10 @@ function reload(){
   // p.style.color = taskColor;
 
 // As an additional challenge, implement a sorting functionality that displays the tasks in ascending or descending order based on priority
-// Bubble?
+// done:
+  // const compareOrder = (a, b) => {
+  //   return a.style.order - b.style.order;
+  // }
 
 // An additional input field (e.g. user, duration, date due)
 // add <input>

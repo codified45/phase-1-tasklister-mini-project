@@ -43,14 +43,22 @@ const prioritize = () => {
   let allUserTasks = document.getElementsByClassName('userAddedItem')
   
   for (const task of allUserTasks) {
-    if (task.style.color === "yellow") {task.style.order = 1};
-    if (task.style.color === "green") {task.style.order = 2};
+          if (task.style.color === "yellow") {task.style.order = 1};
+          if (task.style.color === "green") {task.style.order = 2}; // definition of flexible items? == All child elements of a flex container. 
+  }
 
-    document.getElementById('tasks').replaceChildren(...allUserTasks);
-  };
+  let userTaskArray = [...allUserTasks];
+  console.log(userTaskArray);
+  
+  const compareOrder = (a, b) => {
+    return a.style.order - b.style.order;
+  }
 
-  // const taskList = document.getElementById('tasks');
-  // taskList.replaceChildren(...allUserTasks);
+  userTaskArray.sort(compareOrder)
+
+  const taskList = document.getElementById('tasks');
+  taskList.replaceChildren(...userTaskArray);
+ 
   console.log(allUserTasks);
   // reload();
 };

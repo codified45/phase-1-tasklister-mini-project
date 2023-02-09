@@ -110,10 +110,10 @@ const prioritize = () => {
 
 // An additional input field (e.g. user, duration, date due)
 // add <input>
-// 
+// do time estimated to complete. If the time estimated is longer than 3 hours, then tell the user to break it up into smaller part. have a dialog (alert box) pop up that says "breaking tasks into smaller elements has shown to help make tasks less daunting and promote completion"
 
 // Ability to edit tasks
 // somehow reassign textContent according to what user inputs (might have to create an input field when the user clicks edit button)
 
 // Something of your choice! The main objective is to add a feature that allows the user's input to affect the DOM
-// boost priority button
+// boost priority button. Wow that's actually a great idea.  just change p.style.color to one level above. The order value will be reassigned the next time prioritize! is clicked.  

@@ -41,23 +41,26 @@ const prioritize = () => {
   let allUserTasks = document.getElementsByClassName('userAddedItem')
   
   for (const task of allUserTasks) {  
-    if (task.style.color === "yellow") {task.style.order = 1};  // default style.order === 0, so red does not need to be adjusted
-    if (task.style.color === "green") {task.style.order = 2}; // definition of flexible items? == All child elements of a flex container. 
+    if (task.style.color === "red") {task.style.order = 1}; // default style.order === 0, so red does not need to be adjusted. I adjusted anyway since unprioritized tasks will have the default behavior of populating the top of the list. Otherwise they would be added under the existing "0" values.  
+    if (task.style.color === "yellow") {task.style.order = 2};  
+    if (task.style.color === "green") {task.style.order = 3}; // definition of flexible items? == All child elements of a flex container. 
   }
 
-  let userTaskArray = [...allUserTasks];
-  console.log(userTaskArray);
+// below is how you can make this work by converting the HTML collection into an array and using .sort():
+
+  // let userTaskArray = [...allUserTasks];
+  // console.log(userTaskArray);
   
-  // sort by ascending flex order value
-  const compareOrder = (a, b) => {
-    return a.style.order - b.style.order;
-  }
+  // // sort by ascending flex order value
+  // const compareOrder = (a, b) => {
+  //   return a.style.order - b.style.order;
+  // }
 
-  userTaskArray.sort(compareOrder);
+  // userTaskArray.sort(compareOrder);
 
-  // redraw elements in DOM
-  const taskList = document.getElementById('tasks');
-  taskList.replaceChildren(...userTaskArray);
+  // // redraw elements in DOM
+  // const taskList = document.getElementById('tasks');
+  // taskList.replaceChildren(...userTaskArray);
 };
 
 
@@ -98,9 +101,16 @@ const prioritize = () => {
   // const compareOrder = (a, b) => {
   //   return a.style.order - b.style.order;
   // }
+  // OR:
+  // for (const task of allUserTasks) {  
+  //   if (task.style.color === "red") {task.style.order = 1};
+  //   if (task.style.color === "yellow") {task.style.order = 2};
+  //   if (task.style.color === "green") {task.style.order = 3};
+  // }
 
 // An additional input field (e.g. user, duration, date due)
 // add <input>
+// 
 
 // Ability to edit tasks
 // somehow reassign textContent according to what user inputs (might have to create an input field when the user clicks edit button)

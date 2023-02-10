@@ -18,10 +18,11 @@ const buildToDo = (toDoItem, toDoTime) => {
     alert('Breaking tasks into smaller elements that take less time has shown to help make tasks less daunting and promote completion. Please try dividing the bigger task into smaller elements.');
     return;}
   let p = document.createElement('p');
-  p.textContent = `${toDoItem}, ${toDoTime} minutes     `;
+  p.textContent = `     ${toDoItem}, ${toDoTime} minutes     `;
   let taskColor = document.querySelector('#new_task_priority').value;
   p.style.color = taskColor;
   p.classList.add(taskColor, "userAddedItem");
+  p.contentEditable = true;
 
   document.querySelector('#create-task-form').reset(); 
   
@@ -29,12 +30,24 @@ const buildToDo = (toDoItem, toDoTime) => {
   let dltBtn = document.createElement('button');
   dltBtn.addEventListener('click', handleDelete);
   dltBtn.textContent = "x";
+  dltBtn.contentEditable = false;
   p.appendChild(dltBtn);
+
+    // let editBtn = document.createElement('button');
+    // editBtn.addEventListener('click', handleEdit);
+    // editBtn.textContent = "Edit";
+    // p.prepend(editBtn);
 }
 
 const handleDelete = e => {
   e.target.parentNode.remove();
 }
+
+// target the textContent of parent node somehow. might have to generate an additional input field that pops up, user inputs text, hits enter, then that field's text gets assigned to parent node, and that input field disappears. 
+// const handleEdit = e => {
+
+//   e.target.parentNode.textContent = ;
+// }
 
 
 const prioritize = () => {
@@ -132,7 +145,8 @@ const prioritize = () => {
 
 
 // Ability to edit tasks
-// somehow reassign textContent according to what user inputs (might have to create an input field when the user clicks edit button)
+// done.
+  // p.contentEditable = true;
 
 
 // Something of your choice! The main objective is to add a feature that allows the user's input to affect the DOM

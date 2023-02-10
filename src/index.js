@@ -2,7 +2,6 @@
 
 
 document.addEventListener("DOMContentLoaded", () => {
-  // your code here
   document.querySelector('#create-task-form').addEventListener('submit', e => {
     e.preventDefault();   // in this case, only needed for the form because the submit would auto-refresh the page due to how forms used to work. 
     buildToDo(e.target['new-task-description'].value, e.target['estimated_time'].value);
@@ -33,21 +32,24 @@ const buildToDo = (toDoItem, toDoTime) => {
   dltBtn.contentEditable = false;
   p.appendChild(dltBtn);
 
-    // let editBtn = document.createElement('button');
-    // editBtn.addEventListener('click', handleEdit);
-    // editBtn.textContent = "Edit";
-    // p.prepend(editBtn);
+  let boostBtn = document.createElement('button');
+  boostBtn.addEventListener('click', handleBoost);
+  boostBtn.textContent = "Boost";
+  boostBtn.contentEditable = false;
+  p.prepend(boostBtn);
 }
+
 
 const handleDelete = e => {
   e.target.parentNode.remove();
 }
 
-// target the textContent of parent node somehow. might have to generate an additional input field that pops up, user inputs text, hits enter, then that field's text gets assigned to parent node, and that input field disappears. 
-// const handleEdit = e => {
 
-//   e.target.parentNode.textContent = ;
-// }
+const handleBoost = e => {
+  let priorityColor = e.target.parentNode.style.color;
+  if (priorityColor === "green") {e.target.parentNode.style.color = "yellow"}
+  if (priorityColor === "yellow") {e.target.parentNode.style.color = "red"}
+};  
 
 
 const prioritize = () => {
@@ -145,9 +147,16 @@ const prioritize = () => {
 
 
 // Ability to edit tasks
-// done.
+// done:
   // p.contentEditable = true;
 
 
 // Something of your choice! The main objective is to add a feature that allows the user's input to affect the DOM
-// boost priority button. Wow that's actually a great idea.  just change p.style.color to one level above. The order value will be reassigned the next time prioritize! is clicked.  
+// done:
+  // Boost priority button. Changes task color. Then, order value is reassigned the next time Prioritize! button is clicked.  
+  
+  // const handleBoost = e => {
+    //   let priorityColor = e.target.parentNode.style.color;
+    //   if (priorityColor === "green") {e.target.parentNode.style.color = "yellow"}
+    //   if (priorityColor === "yellow") {e.target.parentNode.style.color = "red"}
+    // };  

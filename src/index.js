@@ -53,9 +53,7 @@ const handleBoost = e => {
 
 
 const prioritize = () => {
-  console.log('clicked');
-  console.log(document.getElementsByClassName('userAddedItem'));
-  let allUserTasks = document.getElementsByClassName('userAddedItem')
+  let allUserTasks = document.getElementsByClassName('userAddedItem');
   
   for (const task of allUserTasks) {  
     if (task.style.color === "red") {task.style.order = 1}; // default style.order === 0, so red does not need to be adjusted. I adjusted anyway since unprioritized tasks will have the default behavior of populating the top of the list. Otherwise they would be added under the existing "0" values.  
